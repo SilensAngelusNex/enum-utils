@@ -1,4 +1,5 @@
-
+//! Copyright 2018 Weston Carvalho
+//! Derived from enum-map-derive, copyright 2017 Konrad Borowshi
 #![recursion_limit = "128"]
 
 extern crate proc_macro;
