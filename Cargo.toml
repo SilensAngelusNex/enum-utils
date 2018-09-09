@@ -1,0 +1,10 @@
+[package]
+name = "enum-utils"
+version = "0.1.0"
+authors = ["Weston Carvalho <wac12@duke.edu>"]
+
+[dependencies]
+enum-set = "0.0.7"
+enum-map = "0.4.1"
+enums-derive = {path = "enums-derive"}
+
