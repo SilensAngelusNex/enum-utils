@@ -33,7 +33,7 @@ mod test {
     use CLike;
     use Enum;
 
-    #[derive(Copy, Clone, Debug)]
+    #[derive(Copy, Clone, PartialEq, Debug)]
     enum Test {
         Hey,
         You
@@ -94,14 +94,14 @@ mod test {
         }
     }
 
+    use std::iter::FromIterator;
     #[test]
     fn test_set() {
-        use std::collections::Vec;
         let vec = vec![Hey];
         let set = super::EnumSet::from_iter(vec.into_iter());
-        for (i, x) in set.iter().enumerate() {
-            assert_eq!(Hey, *x);
-            println!("{:?}", *x);
+        for x in set.iter() {
+            assert_eq!(Hey, x);
+            println!("{:?}", x);
         }
     }
 
