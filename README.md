@@ -1,5 +1,4 @@
 # About
----
 `enum-utils` is a crate designed to make it easy to deal with C-like enumerated types. It provides the following:
 * `trait` **EnumIterator** - Describes an enum whose values can be iterated over.
 * `derive` **Enums** - Derives the implementation of three traits for a C-like macro:
