@@ -12,8 +12,6 @@ use std::iter;
 
 use syn::{Data, DataEnum, DeriveInput, Fields, Ident, Variant};
 
-
-
 fn generate_enum_code(name: Ident, data_enum: DataEnum) -> proc_macro2::TokenStream {
     let enum_count = data_enum.variants.len();
     let enum_count_32: u32 = enum_count as u32;
@@ -50,19 +48,15 @@ fn generate_enum_code(name: Ident, data_enum: DataEnum) -> proc_macro2::TokenStr
         let repeat_name = repeat_name_a.clone();
         let counter = counter.clone();
         let result = quote! {
-                match self {
-                    #(
-                        #repeat_name::#variants_names => #counter,
-                    )*
-                }
-            };
+            match self {
+                #(
+                    #repeat_name::#variants_names => #counter,
+                )*
+            }
+        };
         (result.clone(), result)
-
     } else {
-        (
-            quote! { self as usize },
-            quote! { *self as u32 }
-        )
+        (quote! { self as usize }, quote! { *self as u32 })
     };
 
     let (from_usize, from_u32) = (
@@ -81,9 +75,9 @@ fn generate_enum_code(name: Ident, data_enum: DataEnum) -> proc_macro2::TokenStr
                 )*
                 _ => unreachable!()
             }
-        }
+        },
     );
-    
+
     quote! {
         #[automatically_derived]
         impl ::enum_utils::CLike for #name {
